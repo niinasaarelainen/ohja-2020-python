@@ -1,0 +1,50 @@
+
+
+class Henkilo:
+    def __init__(self, nimi: str, ika: int, pituus: int, paino: int):
+        self.nimi = nimi
+        self.ika = ika
+        self.pituus = pituus
+        self.paino = paino
+    def __repr__(self):
+        return f"{self.nimi} ({self.ika} vuotta, {self.pituus} cm., {self.paino} kg."
+
+class Kasvatuslaitos:
+    def __init__(self):
+        self.punnitusten_lkm = 0
+    def punnitse(self, henkilo: Henkilo):  
+        self.punnitusten_lkm += 1      
+        return henkilo.paino
+    def syota(self, henkilo: Henkilo):
+        henkilo.paino += 1
+    def punnitukset(self):
+        return self.punnitusten_lkm
+
+
+if __name__ == "__main__":
+    haagan_neuvola = Kasvatuslaitos()
+
+    eero = Henkilo("Eero", 1, 110, 7)
+    pekka = Henkilo("Pekka", 33, 176, 85)
+
+    print(f"punnituksia tehty {haagan_neuvola.punnitukset()}")
+
+    haagan_neuvola.punnitse(eero)
+    haagan_neuvola.punnitse(eero)
+
+    print(f"punnituksia tehty {haagan_neuvola.punnitukset()}")
+
+    haagan_neuvola.punnitse(eero)
+    haagan_neuvola.punnitse(eero)
+    haagan_neuvola.punnitse(eero)
+    haagan_neuvola.punnitse(eero)
+
+    print(f"punnituksia tehty {haagan_neuvola.punnitukset()}")
+
+
+
+
+
+
+
+

@@ -34,7 +34,7 @@ def nollaa_kaikki():
 
 def midi_play(n, nykyinen_key):
     #ei voi laskea systeemillä, esim. i+=2, koska välillä on puolisävelaskel välillä koko-
-    midi_numbers = {99:60, 100:62, 101:64, 102:65, 103:67}    # 99 = 'c',   60 = keski-c, 67 = g
+    midi_numbers = {K_c:60, K_d:62, K_e:64, K_f:65, K_g:67}    
     midi_out.note_off(midi_numbers[nykyinen_key], 110)
     midi_out.note_on(midi_numbers[n], 110)
     
@@ -149,7 +149,7 @@ def main():
     
     jess_no_aika = 0    
     nuotit[0].arvo_nuotti()     # aluksi 1 nuotti
-    nykyinen_key = 99
+    nykyinen_key = K_c          # ihan sama mikä
 
     while True:
         for nuotti in nuotit:
@@ -162,7 +162,7 @@ def main():
                 pygame.quit()
             else:                
                 if tapahtuma.type == pygame.KEYDOWN:    
-                    if tapahtuma.key >= 99 and tapahtuma.key <= 103:
+                    if tapahtuma.key in nappaimet:
                         midi_play(tapahtuma.key, nykyinen_key)          # MIDI täällä                                      
                         nykyinen_key = tapahtuma.key
                     jess_no_aika = 0
